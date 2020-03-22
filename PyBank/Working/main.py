@@ -17,24 +17,23 @@ with open(budgetpath, 'r') as budgetfile:
 #find total number of months in data, set count to 0 and add 1 for each row in the file
     month_count = 0
     total_p_and_l = 0
+    #Create new list of just P&L values
+    p_and_l_list = []
     for row in budgetreader:
+    #Find total number of months in data    
         month_count += 1
     
-    #print(month_count)
-
 #Find net total amount of profit/losses
         total_p_and_l = total_p_and_l + int(row[1])
-
+        p_and_l_list.append(row[1])
+    
+    print(month_count)
     print(total_p_and_l)
+    print(p_and_l_list)
 
-    #while row[1] != 'None'
+    
 #Find average of changes over entire period
 #Individual change: P&L from r + 1 - P&L from r (don't include last row)
 #Total change (sum of all changes)
 #Average change/total months-1
-        total_change = 0
-        p_and_l = row[1]
-        for row in budgetreader:
-            total_change = total_change + p_and_l
-
-        print(total_change)
+    
