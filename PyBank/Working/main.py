@@ -4,6 +4,7 @@ import csv
 #Path to collect data from csv file
 budgetpath = os.path.join('..', 'Resources', 'budget_data.csv')
 
+
 #Read in the csv file
 with open(budgetpath, 'r') as budgetfile:
 #Split data on commas and skip header row
@@ -15,11 +16,12 @@ with open(budgetpath, 'r') as budgetfile:
     #    print(row)
 
 
-#find total number of months in data, set count to 0 and add 1 for each row in the file
+#Find total number of months in data, set count to 0 and add 1 for each row in the file
     month_count = 0
     total_p_and_l = 0
-#Create new list of just P&L values
+#Create new empty list of just P&L values
     p_and_l_list = []
+    p_and_l_change = []
     for row in budgetreader:
 #Find total number of months in data    
         month_count += 1
@@ -62,7 +64,10 @@ with open(budgetpath, 'r') as budgetfile:
 #print(p_and_l_change)
 
 #Total change (sum of all changes)
-    #total_change = sum(p_and_l_change)
+    total_change = 0
+    for c in p_and_l_change:
+        total_change += c
+    print(total_change)
 #Average change/total months-1
     #total_change = 0
 
