@@ -25,15 +25,22 @@ with open(budgetpath, 'r') as budgetfile:
     
 #Find net total amount of profit/losses
         total_p_and_l = total_p_and_l + int(row[1])
-        p_and_l_list.append(row[1])
+        p_and_l_list.append(int(row[1]))
     
-    print(month_count)
-    print(total_p_and_l)
-    print(p_and_l_list)
+    #print(month_count)
+    #print(total_p_and_l)
+    #print(p_and_l_list)
 
     
 #Find average of changes over entire period
-#Individual change: P&L from r + 1 - P&L from r (don't include last row)
+#Individual change: P&L from r + 1 - P&L from r (don't include last row) - p_and_l_change
+
+    p_and_l_change = []
+    for i in range(len(p_and_l_list)-1):
+        p_and_l_change.append([p_and_l_list[i+1] - p_and_l_list[i]])
+
+    #print(p_and_l_change)
+
 #Total change (sum of all changes)
 #Average change/total months-1
-    
+    total_change = 0
