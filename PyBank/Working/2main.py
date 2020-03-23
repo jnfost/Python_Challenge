@@ -37,16 +37,16 @@ with open(budgetpath, 'r') as budgetfile:
     for i in range(len(p_and_l_list)-1):
     #p_and_l_change.append([p_and_l_list[i+1] - p_and_l_list[i]])
         p_and_l_change.append(int(p_and_l_list[i+1]) - int(p_and_l_list[i]))
-
+    print(p_and_l_change)
 #Zip all columns together to make new list
     new_budget_data = zip(dates, p_and_l_list, p_and_l_change)
     new_budget_list = list(new_budget_data)
     #print(new_budget_list)
 #Find max profit and max loss
     max_profit = max(p_and_l_change)
-    #print(max_profit)
+    print(max_profit)
     max_loss = min(p_and_l_change)
-    #print(max_loss)
+    print(max_loss)
 
 #Total change (sum of all changes)
     total_change = 0
@@ -54,23 +54,44 @@ with open(budgetpath, 'r') as budgetfile:
     for item in p_and_l_change:
         total_change = total_change + int(item)
 
-    #print(total_change)
 #Average change/total months-1
     avg_change = total_change / (month_count - 1)
-    #print(avg_change)
+    avg_change_c = round(avg_change, 2)
+    
+    for data in new_budget_list:
+        if data[2] == max_profit:
+            max_profit_date = data[0]
+        elif data[2] == max_loss:
+            max_loss_date = row[0]
 
-#print(month_count)
-#print(total_p_and_l)
-#print(dates)
-#print(p_and_l_list)
-#print(p_and_l_change)
-#print(new_budget_data)
+    print(max_profit_date)
+    print(max_loss_date)
+
+
 
 
 
     print("Financial Analysis: ")
     print("---------------------")
     print(f"Total Months: {month_count}")
-    print(f"Average Change: {avg_change}")
-    #print(f"Greatest Increase in Profits: {max_profit_date}  {max_profit}")
-    #print(f"Greatest Decrease in Losses: {max_loss_date}  {max_loss}")
+    print(f"Total : ${total_p_and_l}")
+    print(f"Average Change: ${avg_change_c}")
+    print(f"Greatest Increase in Profits: {max_profit_date}  ${max_profit}")
+    print(f"Greatest Decrease in Losses: {max_loss_date}  ${max_loss}")
+
+output_path = os.path.join('..', 'Resources', 'financial_analysis.txt')
+
+with open(output_path, 'w') as txtfile:
+    txtfile.write("Financial Analysis: ")
+    txtfile.write("\n")
+    txtfile.write("---------------------")
+    txtfile.write("\n")
+    txtfile.write(f"Total Months: {month_count}")
+    txtfile.write("\n")
+    txtfile.write(f"Total : ${total_p_and_l}")
+    txtfile.write("\n")
+    txtfile.write(f"Average Change: ${avg_change_c}")
+    txtfile.write("\n")
+    txtfile.write(f"Greatest Increase in Profits: {max_profit_date}  ${max_profit}")
+    txtfile.write("\n")
+    txtfile.write(f"Greatest Decrease in Losses: {max_loss_date}  ${max_loss}")
