@@ -37,16 +37,18 @@ with open(budgetpath, 'r') as budgetfile:
     for i in range(len(p_and_l_list)-1):
     #p_and_l_change.append([p_and_l_list[i+1] - p_and_l_list[i]])
         p_and_l_change.append(int(p_and_l_list[i+1]) - int(p_and_l_list[i]))
-    print(p_and_l_change)
+    #print(p_and_l_change)
+
+
 #Zip all columns together to make new list
     new_budget_data = zip(dates, p_and_l_list, p_and_l_change)
     new_budget_list = list(new_budget_data)
-    #print(new_budget_list)
+    print(new_budget_list)
 #Find max profit and max loss
     max_profit = max(p_and_l_change)
-    print(max_profit)
+    
     max_loss = min(p_and_l_change)
-    print(max_loss)
+    
 
 #Total change (sum of all changes)
     total_change = 0
@@ -63,11 +65,6 @@ with open(budgetpath, 'r') as budgetfile:
             max_profit_date = data[0]
         elif data[2] == max_loss:
             max_loss_date = row[0]
-
-    print(max_profit_date)
-    print(max_loss_date)
-
-
 
 
 
