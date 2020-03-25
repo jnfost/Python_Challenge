@@ -13,7 +13,9 @@ with open(electionpath, 'r') as electionfile:
 
 # Set initial value for voter count
     voter_count = 0
+# Create empty list to hold names of candidates
     candidates = []
+# Set initial value for counts of each candidates vote totals
     cand_0 = 0
     cand_1 = 0
     cand_2 = 0
@@ -44,20 +46,19 @@ with open(electionpath, 'r') as electionfile:
     percent_OTooley = round((cand_3 / voter_count) * 100, 3)
 
 # Winner of election based on popular vote
-# Create list of candidate vote totals
-# Zip together with list of candidate names    
+    # Create list of candidate vote totals
+    # Zip together with list of candidate names    
 
     cand_votes = [cand_0, cand_1, cand_2, cand_3]
     tally_data = zip(candidates, cand_votes)
     tally_list = list(tally_data)
 #Winner is name associated with greatest total
-
     for n in tally_list:
         if n[1] == max(tally_list):
             winner = n[0]
-        else:
-
-print(winner)
+    
+    #print(winner)
+    
     
 
 print("Election Results")
@@ -70,3 +71,27 @@ print(f"{candidates[2]}: {percent_Li}%  ({cand_2})")
 print(f"{candidates[3]}: {percent_OTooley}%  ({cand_3})")
 print("------------------------")
 print(f"Winner: {candidates[0]} ")
+
+
+output_path = os.path.join('.', 'Resources', 'election_results.txt')
+
+with open(output_path, 'w') as textfile:
+    textfile.write("Election Results")
+    textfile.write("\n")
+    textfile.write("------------------------")
+    textfile.write("\n")
+    textfile.write(f"Total Votes:  {voter_count}")
+    textfile.write("\n")
+    textfile.write("------------------------")
+    textfile.write("\n")
+    textfile.write(f"{candidates[0]}: {percent_Khan}%  ({cand_0})")
+    textfile.write("\n")
+    textfile.write(f"{candidates[1]}: {percent_Correy}%  ({cand_1})")
+    textfile.write("\n")
+    textfile.write(f"{candidates[2]}: {percent_Li}%  ({cand_2})")
+    textfile.write("\n")
+    textfile.write(f"{candidates[3]}: {percent_OTooley}%  ({cand_3})")
+    textfile.write("\n")
+    textfile.write("------------------------")
+    textfile.write("\n")
+    textfile.write(f"Winner: {candidates[0]} ")
