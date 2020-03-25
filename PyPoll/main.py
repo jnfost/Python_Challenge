@@ -52,15 +52,14 @@ with open(electionpath, 'r') as electionfile:
     cand_votes = [cand_0, cand_1, cand_2, cand_3]
     tally_data = zip(candidates, cand_votes)
     tally_list = list(tally_data)
-#Winner is name associated with greatest total
-    for n in tally_list:
-        if n[1] == max(tally_list):
-            winner = n[0]
     
-    #print(winner)
-    
-    
+#Winner is name associated with greatest total  (max of cand_votes)   
+    winner_total = max(cand_votes)
+    for item in tally_list:
+        if item[1] == winner_total:
+            winner = item[0]
 
+  
 print("Election Results")
 print("------------------------")
 print(f"Total Votes:  {voter_count}")
@@ -70,7 +69,7 @@ print(f"{candidates[1]}: {percent_Correy}%  ({cand_1})")
 print(f"{candidates[2]}: {percent_Li}%  ({cand_2})")
 print(f"{candidates[3]}: {percent_OTooley}%  ({cand_3})")
 print("------------------------")
-print(f"Winner: {candidates[0]} ")
+print(f"Winner: {winner} ")
 
 
 output_path = os.path.join('.', 'Resources', 'election_results.txt')
@@ -94,4 +93,4 @@ with open(output_path, 'w') as textfile:
     textfile.write("\n")
     textfile.write("------------------------")
     textfile.write("\n")
-    textfile.write(f"Winner: {candidates[0]} ")
+    textfile.write(f"Winner: {winner} ")
