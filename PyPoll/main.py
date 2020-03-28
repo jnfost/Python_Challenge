@@ -40,10 +40,13 @@ with open(electionpath, 'r') as electionfile:
             cand_3 += 1
 
 # Percentage of votes for each candidate (total for each candidate / total votes)
-    percent_Khan = round((cand_0 / voter_count) * 100, 3)
-    percent_Correy = round((cand_1 / voter_count) * 100, 3)
-    percent_Li = round((cand_2 / voter_count) * 100, 3)
-    percent_OTooley = round((cand_3 / voter_count) * 100, 3)
+# Format to percentage using format(  , '.3%') rounding to 3 decimal places
+    percent_Khan = format((cand_0 / voter_count), '.3%' )
+    percent_Correy = format((cand_1 / voter_count), '.3%')
+    percent_Li = format((cand_2 / voter_count), '.3%')
+    percent_OTooley = format((cand_3 / voter_count), '.3%')
+
+
 
 # Winner of election based on popular vote
     # Create list of candidate vote totals
@@ -64,10 +67,10 @@ print("Election Results")
 print("------------------------")
 print(f"Total Votes:  {voter_count}")
 print("------------------------")
-print(f"{candidates[0]}: {percent_Khan}%  ({cand_0})")
-print(f"{candidates[1]}: {percent_Correy}%  ({cand_1})")
-print(f"{candidates[2]}: {percent_Li}%  ({cand_2})")
-print(f"{candidates[3]}: {percent_OTooley}%  ({cand_3})")
+print(f"{candidates[0]}: {percent_Khan}  ({cand_0})")
+print(f"{candidates[1]}: {percent_Correy}  ({cand_1})")
+print(f"{candidates[2]}: {percent_Li}  ({cand_2})")
+print(f"{candidates[3]}: {percent_OTooley}  ({cand_3})")
 print("------------------------")
 print(f"Winner: {winner} ")
 
@@ -83,13 +86,13 @@ with open(output_path, 'w') as textfile:
     textfile.write("\n")
     textfile.write("------------------------")
     textfile.write("\n")
-    textfile.write(f"{candidates[0]}: {percent_Khan}%  ({cand_0})")
+    textfile.write(f"{candidates[0]}: {percent_Khan}  ({cand_0})")
     textfile.write("\n")
-    textfile.write(f"{candidates[1]}: {percent_Correy}%  ({cand_1})")
+    textfile.write(f"{candidates[1]}: {percent_Correy}  ({cand_1})")
     textfile.write("\n")
-    textfile.write(f"{candidates[2]}: {percent_Li}%  ({cand_2})")
+    textfile.write(f"{candidates[2]}: {percent_Li}  ({cand_2})")
     textfile.write("\n")
-    textfile.write(f"{candidates[3]}: {percent_OTooley}%  ({cand_3})")
+    textfile.write(f"{candidates[3]}: {percent_OTooley}  ({cand_3})")
     textfile.write("\n")
     textfile.write("------------------------")
     textfile.write("\n")

@@ -43,7 +43,7 @@ with open(budgetpath, 'r') as budgetfile:
 #Zip all columns together to make new list
     new_budget_data = zip(dates, p_and_l_list, p_and_l_change)
     new_budget_list = list(new_budget_data)
-    print(new_budget_list)
+
 #Find max profit and max loss
     max_profit = max(p_and_l_change)
     
@@ -64,7 +64,7 @@ with open(budgetpath, 'r') as budgetfile:
         if data[2] == max_profit:
             max_profit_date = data[0]
         elif data[2] == max_loss:
-            max_loss_date = row[0]
+            max_loss_date = data[0]
 
 
 
@@ -73,8 +73,8 @@ with open(budgetpath, 'r') as budgetfile:
     print(f"Total Months: {month_count}")
     print(f"Total : ${total_p_and_l}")
     print(f"Average Change: ${avg_change_c}")
-    print(f"Greatest Increase in Profits: {max_profit_date}  ${max_profit}")
-    print(f"Greatest Decrease in Losses: {max_loss_date}  ${max_loss}")
+    print(f"Greatest Increase in Profits: {max_profit_date}  (${max_profit})")
+    print(f"Greatest Decrease in Losses: {max_loss_date}  (${max_loss})")
 
 output_path = os.path.join('..', 'Resources', 'financial_analysis.txt')
 
@@ -89,6 +89,6 @@ with open(output_path, 'w') as txtfile:
     txtfile.write("\n")
     txtfile.write(f"Average Change: ${avg_change_c}")
     txtfile.write("\n")
-    txtfile.write(f"Greatest Increase in Profits: {max_profit_date}  ${max_profit}")
+    txtfile.write(f"Greatest Increase in Profits: {max_profit_date}  (${max_profit})")
     txtfile.write("\n")
-    txtfile.write(f"Greatest Decrease in Losses: {max_loss_date}  ${max_loss}")
+    txtfile.write(f"Greatest Decrease in Losses: {max_loss_date}  (${max_loss})")
